@@ -1,11 +1,13 @@
 import streamlit as st
 import os
 import openai
-from dotenv import load_dotenv
+from dotenv import load_dotenv, dotenv_values
 from llama_index.core.llama_pack import download_llama_pack
 
 load_dotenv()
-openai.api_key = os.environ["OPENAI_API_KEY"]
+# openai.api_key = os.environ["OPENAI_API_KEY"]
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 pack_folder = "./resume_screener_pack"
 ResumeScreenerPack = download_llama_pack("ResumeScreenerPack", pack_folder)
